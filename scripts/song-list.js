@@ -15,7 +15,9 @@
      `);
 
      song.element.on('click', event => {
-       helper.playPauseAndUpdate(song);
+       player.playPause(song);
+       const totalTime = player.getDuration();
+       $('#time-control .total-time').text( totalTime );
        $('button#play-pause').attr('playState', player.playState);
      });
 

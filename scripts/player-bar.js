@@ -1,9 +1,9 @@
-const totalTimeDiv = $('#time-control .total-time');
-
 {
 
   $('button#play-pause').on('click', function() {
-       helper.playPauseAndUpdate();
+       player.playPause();
+       const totalTime = player.getDuration();
+       $('#time-control .total-time').text( totalTime );
        $(this).attr('playState', player.playState);
      });
 
@@ -15,7 +15,9 @@ const totalTimeDiv = $('#time-control .total-time');
     if (nextSongIndex >= album.songs.length) { return; }
 
     const nextSong = album.songs[nextSongIndex];
-    helper.playPauseAndUpdate(nextSong);
+    player.playPause(nextSong);
+    const totalTime = player.getDuration();
+    $('#time-control .total-time').text( totalTime );
   });
 
   $('button#previous').on('click', function() {
@@ -26,11 +28,13 @@ const totalTimeDiv = $('#time-control .total-time');
     if (previousSongIndex < 0) { return; }
 
     const previousSong = album.songs[previousSongIndex];
-    helper.playPauseAndUpdate(previousSong);
+    player.playPause(previousSong);
+    const totalTime = player.getDuration();
+    $('#time-control .total-time').text( totalTime );
   });
 
   $('#time-control input').on('input', function (event) {
-    helper.playPauseAndUpdate(event.target.value);
+    player.skipTo(event.target.value);
   });
 
   setInterval( () => {

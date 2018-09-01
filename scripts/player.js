@@ -31,8 +31,6 @@ class Player {
       this.soundObject.play();
       this.playState = 'playing';
       this.currentlyPlaying.element.removeClass('paused').addClass('playing');
-
-      alert(this.getDuration());
     } else {
       this.soundObject.pause();
       this.playState = 'paused';
