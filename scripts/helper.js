@@ -1,8 +1,8 @@
 class Helper {
   playPauseAndUpdate (song) {
     player.playPause (song);
-    totalTimeDiv.text(player.getDuration());
+    const totalTime = player.getDuration();
+    $('#time-control .total-time').text( totalTime );
   }
 }
-
 const helper = new Helper();
